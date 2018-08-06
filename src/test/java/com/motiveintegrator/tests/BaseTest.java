@@ -68,8 +68,6 @@ import java.lang.reflect.InvocationTargetException;
     @BeforeSuite(alwaysRun = true)
     public void configure() {
         RestAssured.baseURI = FilesUtils.getConfigProperty("baseUri");
-        //RestAssured.port = 8080;
-//        RestAssured.basePath = "/books";
     }
 
 }

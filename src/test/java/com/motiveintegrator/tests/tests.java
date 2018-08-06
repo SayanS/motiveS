@@ -10,7 +10,7 @@ public class tests extends  BaseTest{
     @Test(enabled=true)
     public void checkLogin() throws URISyntaxException {
        ApiUtils.login("max.ivanov@gmail.com","Motive1");
-       getPage(HomePage.class).open();
+       getPage(HomePage.class).open(ApiUtils.getCookies());
        int i=0;
     }
 }
