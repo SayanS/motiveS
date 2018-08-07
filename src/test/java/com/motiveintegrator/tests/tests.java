@@ -1,16 +1,18 @@
 package com.motiveintegrator.tests;
 
-import com.motiveintegrator.api.ApiUtils;
-import com.motiveintegrator.pages.HomePage;
+import com.motiveintegrator.models.User;
+import com.motiveintegrator.pages.LoginPage;
 import org.testng.annotations.Test;
 
 import java.net.URISyntaxException;
+@Test(dataProviderClass = DataProviders.class)
+public class tests extends BaseTest {
 
-public class tests extends  BaseTest{
-    @Test(enabled=true)
-    public void checkLogin() throws URISyntaxException {
-       ApiUtils.login("max.ivanov@gmail.com","Motive1");
-       getPage(HomePage.class).open(ApiUtils.getCookies());
-       int i=0;
+    @Test(enabled = true, dataProvider = "getAdminUser")
+    public void checkLogin(User user) throws URISyntaxException {
+        LoginPage loginPage = getPage(LoginPage.class);
+        loginPage.open();
+        loginPage.login(user);
+        int i = 0;
     }
 }

@@ -1,10 +1,8 @@
 package com.motiveintegrator.pages;
 
 import com.google.common.base.Function;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import io.restassured.http.Cookies;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -15,6 +13,7 @@ import java.util.List;
 
 public abstract class BasePage {
     private WebDriver webDriver;
+    protected String pageURL;
 
     public BasePage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -24,8 +23,16 @@ public abstract class BasePage {
         return webDriver;
     }
 
-    protected String open(String url) {
-        webDriver.navigate().to(url);
+    protected void webDriverAddRestCookies(Cookies cookiesRest ){
+        cookiesRest.forEach(cookieRest ->{
+                Cookie cookie= new Cookie(cookieRest.getName(),cookieRest.getValue());
+                webDriver.manage()
+                        .addCookie(cookie);
+        });
+    }
+
+    public String open() {
+        webDriver.navigate().to(pageURL);
         return webDriver.getCurrentUrl();
     }
 

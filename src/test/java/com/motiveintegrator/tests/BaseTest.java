@@ -16,7 +16,7 @@ import java.lang.reflect.InvocationTargetException;
 //@ContextConfiguration("file:src/test/resources/spring.xml")
 //@ContextConfiguration(locations = { "classpath:spring.xml" })
 //public class BaseTest extends AbstractTestNGSpringContextTests {
-    public class BaseTest {
+public class BaseTest {
     private WebDriver webDriver;
 
     @BeforeClass

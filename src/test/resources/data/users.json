@@ -1,0 +1,12 @@
+[
+{
+  "login":"max.ivanov@gmail.com",
+  "password":"Motive1",
+  "role":"ADMIN"
+},
+  {
+    "login":"nonexisting@gmail.com",
+    "password":"nonexisting",
+    "role":"ADMIN"
+  }
+]
